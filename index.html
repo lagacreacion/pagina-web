@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title id="page-title">BarberKing — Cortes de otro nivel</title>
+    
+    <!-- Meta Tags for SEO -->
+    <meta name="description" content="BarberKing - Cortes de pelo y barba de primer nivel. Reserva tu cita online de forma fácil y rápida.">
+    <meta name="keywords" content="barberia, corte de pelo, barba, reservas online, barberking">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav id="navbar">
+        <div class="nav-logo">
+            <div class="nav-logo-icon" id="nav-logo-icon">✂️</div>
+            <span id="nav-brand-name" class="gold">BarberKing</span>
+        </div>
+        <div class="nav-links" id="nav-links">
+            <a href="#services">Servicios</a>
+            <a href="#barbers">Barberos</a>
+            <a href="#booking">Reservar</a>
+            <a href="#info">Contacto</a>
+            <a href="#booking" class="btn-reserve">Reservar Hora</a>
+            <button class="nav-admin-btn" onclick="openAdmin()" id="admin-open-btn">⚙ Admin</button>
+        </div>
+        <button class="hamburger" onclick="toggleMenu()" id="hamburger" aria-label="Menu">
+            <span></span><span></span><span></span>
+        </button>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section id="hero">
+        <canvas id="hero-canvas"></canvas>
+        <div class="hero-orb hero-orb-1"></div>
+        <div class="hero-orb hero-orb-2"></div>
+        <div class="hero-orb hero-orb-3"></div>
+        <div class="hero-grid"></div>
+        <div class="hero-content">
+            <div class="hero-eyebrow" id="hero-badge">
+                <span class="hero-eyebrow-dot"></span>
+                <span id="hero-badge-text">Estudio Premium</span>
+            </div>
+            <h1 class="hero-title" id="hero-title-el"></h1>
+            <div class="hero-subtitle-line"></div>
+            <p class="hero-subtitle" id="hero-tagline">Cortes de otro nivel. Estilo que define.</p>
+            <div class="hero-cta">
+                <a href="#booking" class="btn-primary" id="hero-btn-1">✦ Reservar Ahora</a>
+                <a href="#barbers" class="btn-secondary" id="hero-btn-2">Ver el equipo →</a>
+            </div>
+            <div class="hero-stats">
+                <div class="hero-stat">
+                    <div class="hero-stat-num" data-target="500" data-suffix="+">0</div>
+                    <div class="hero-stat-label">Clientes</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num" data-target="5" data-suffix="★">0</div>
+                    <div class="hero-stat-label">Calificación</div>
+                </div>
+                <div class="hero-stat">
+                    <div class="hero-stat-num" data-target="3" data-suffix="+">0</div>
+                    <div class="hero-stat-label">Años</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down"><div class="scroll-down-line"></div>scroll</div>
+    </section>
+
+    <!-- ===== SERVICES ===== -->
+    <section id="services">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <div class="section-tag" id="services-tag">✦ Lo que hacemos</div>
+                <h2>Nuestros <span class="gold">Servicios</span></h2>
+                <div class="section-divider"></div>
+                <p id="services-subtitle">Desde el clásico hasta lo más moderno, con la más alta calidad</p>
+            </div>
+        </div>
+        <div class="services-grid" id="services-grid"></div>
+    </section>
+
+    <!-- ===== PROFESSIONALS ===== -->
+    <section id="barbers">
+        <div class="section-container">
+            <div class="section-header reveal">
+                <div class="section-tag" id="team-tag">👑 El equipo</div>
+                <h2 id="team-title">Nuestros <span class="gold">Profesionales</span></h2>
+                <div class="section-divider"></div>
+                <p id="team-subtitle">Artistas del estilo con años de experiencia y pasión por su trabajo</p>
+            </div>
+        </div>
+        <div class="barbers-grid" id="barbers-grid"></div>
+    </section>
+
+    <!-- ===== BOOKING ===== -->
+    <section id="booking">
+        <div class="booking-bg"></div>
+        <div class="booking-wrapper">
+            <div class="section-header reveal">
+                <div class="section-tag">📅 Agenda tu turno</div>
+                <h2>Reserva tu <span class="gold">Cita</span></h2>
+                <div class="section-divider"></div>
+                <p>Rápido, simple y sin llamadas</p>
+            </div>
+            <div class="booking-card reveal" id="booking-main">
+                <!-- Steps -->
+                <div class="booking-steps">
+                    <div class="step active" id="step-ind-1">
+                        <div class="step-num">1<span class="step-label">Servicio</span></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step" id="step-ind-2">
+                        <div class="step-num">2<span class="step-label">Fecha</span></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step" id="step-ind-3">
+                        <div class="step-num">3<span class="step-label">Datos</span></div>
+                        <div class="step-line"></div>
+                    </div>
+                    <div class="step" id="step-ind-4">
+                        <div class="step-num">4<span class="step-label">Listo</span></div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Servicio + Barbero -->
+                <div class="step-panel active" id="panel-1">
+                    <div class="form-group">
+                        <div class="form-label">Elige tu servicio</div>
+                        <div class="card-select-grid" id="booking-services"></div>
+                    </div>
+                    <div class="form-group" style="margin-top:1.5rem">
+                        <div class="form-label" id="booking-barber-label">Elige tu profesional</div>
+                        <div class="card-select-grid" id="booking-barbers"></div>
+                    </div>
+                    <div class="step-nav">
+                        <button class="btn-step-next" id="next-1" onclick="goStep(2)" disabled>Siguiente →</button>
+                    </div>
+                </div>
+
+                <!-- Step 2: Fecha + Hora -->
+                <div class="step-panel" id="panel-2">
+                    <div class="form-group">
+                        <div class="form-label">Elige una fecha (próximos 9 días)</div>
+                        <div class="date-grid" id="date-grid"></div>
+                    </div>
+                    <div class="form-group" id="time-group" style="display:none">
+                        <div class="form-label">Elige un horario</div>
+                        <div class="time-grid" id="time-grid"></div>
+                    </div>
+                    <div class="step-nav">
+                        <button class="btn-step-prev" onclick="goStep(1)">← Volver</button>
+                        <button class="btn-step-next" id="next-2" onclick="goStep(3)" disabled>Siguiente →</button>
+                    </div>
+                </div>
+
+                <!-- Step 3: Datos personales -->
+                <div class="step-panel" id="panel-3">
+                    <div class="booking-summary" id="booking-summary"></div>
+                    <div class="form-group">
+                        <label class="form-label" for="b-name">Tu nombre</label>
+                        <input type="text" id="b-name" class="form-control" placeholder="Ej: Juan Pérez" oninput="checkStep3()">
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label" for="b-email">Tu correo</label>
+                        <input type="email" id="b-email" class="form-control" placeholder="tucorreo@email.com" oninput="checkStep3()">
+                    </div>
+                    <div class="step-nav">
+                        <button class="btn-step-prev" onclick="goStep(2)">← Volver</button>
+                        <button class="btn-step-next" id="next-3" onclick="confirmBooking()" disabled>✅ Confirmar</button>
+                    </div>
+                </div>
+
+                <!-- Step 4: Confirmación -->
+                <div class="step-panel" id="panel-4">
+                    <div id="booking-confirm">
+                        <div class="confirm-icon">🎉</div>
+                        <div class="confirm-title">¡Reserva lista!</div>
+                        <div class="confirm-sub">Haz click abajo para confirmar por WhatsApp.<br>Recibirás los detalles en tu chat.</div>
+                        <a href="#" id="whatsapp-confirm-btn" target="_blank" class="btn-whatsapp-confirm">
+                            <svg viewBox="0 0 24 24" fill="currentColor" style="width:22px;height:22px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                            Enviar confirmación por WhatsApp
+                        </a>
+                        <button class="btn-new-booking" onclick="resetBooking()">+ Nueva reserva</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INFO ===== -->
+    <section id="info">
+        <div class="section-header reveal">
+            <div class="section-tag">📍 Encuéntranos</div>
+            <h2>Dónde <span class="gold">Estamos</span></h2>
+            <div class="section-divider"></div>
+        </div>
+        <div class="info-grid">
+            <div class="info-card reveal-left">
+                <h3><span>🕐</span> Horarios</h3>
+                <ul class="hours-list" id="hours-display"></ul>
+            </div>
+            <div class="info-card reveal">
+                <h3><span>📍</span> Ubicación</h3>
+                <p class="address-text" id="address-display"></p>
+                <a href="#" id="maps-link" target="_blank" class="location-btn">📍 Ver en Google Maps</a>
+                <a href="#" id="shop-wa-btn" target="_blank" class="shop-whatsapp-btn">
+                    <svg viewBox="0 0 24 24" fill="currentColor" style="width:18px;height:18px"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+                    WhatsApp Barbería
+                </a>
+            </div>
+            <div class="info-card reveal-right">
+                <h3><span>📲</span> Redes Sociales</h3>
+                <div class="socials-list" id="socials-display"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="footer-logo gold" id="footer-name">BarberKing</div>
+        <div class="footer-tagline" id="footer-tagline">Cortes de otro nivel. Estilo que define.</div>
+        <div class="footer-socials" id="footer-socials"></div>
+        <div class="footer-copy">© 2025 <span id="footer-copy-name">BarberKing</span>. Todos los derechos reservados.<br>Diseño por <a href="#">BarberWeb Pro</a></div>
+    </footer>
+
+    <!-- ===== FLOATING WHATSAPP ===== -->
+    <a href="#" id="wa-float" target="_blank" title="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
+    </a>
+
+    <!-- ===== TOAST ===== -->
+    <div id="toast"></div>
+
+    <!-- ===== ADMIN OVERLAY ===== -->
+    <div id="admin-overlay" class="hidden">
+        <!-- Login -->
+        <div id="admin-login">
+            <div class="admin-login-title">⚙️ Panel Admin</div>
+            <div class="admin-login-sub">Ingresa tu contraseña para continuar</div>
+            <div class="admin-form-group">
+                <label class="admin-form-label" for="admin-pass">Contraseña</label>
+                <input type="password" id="admin-pass" class="admin-form-control" placeholder="••••••••" onkeyup="if(event.key==='Enter')doLogin()">
+            </div>
+            <button class="admin-save-btn" style="width:100%;text-align:center;margin-top:0.5rem" onclick="doLogin()">Ingresar →</button>
+            <div class="login-error" id="login-error">Contraseña incorrecta</div>
+            <button style="display:block;width:100%;margin-top:1rem;background:none;color:var(--text-muted);font-size:0.85rem;border:none;cursor:pointer" onclick="closeAdmin()">Cancelar</button>
+        </div>
+
+        <!-- Panel -->
+        <div id="admin-panel" class="hidden">
+            <div class="admin-header">
+                <h2><span>⚙️</span> Panel de Administración</h2>
+                <button class="admin-close" onclick="closeAdmin()">✕</button>
+            </div>
+            <div class="admin-tabs">
+                <button class="admin-tab active" onclick="switchTab('tab-general')">🏠 General</button>
+                <button class="admin-tab" onclick="switchTab('tab-colors');renderPaletteGrid()">🎨 Colores</button>
+                <button class="admin-tab" onclick="switchTab('tab-barbers')">👤 Barberos</button>
+                <button class="admin-tab" onclick="switchTab('tab-services')">✂️ Servicios</button>
+                <button class="admin-tab" onclick="switchTab('tab-hours')">🕐 Horarios</button>
+                <button class="admin-tab" onclick="switchTab('tab-socials')">📲 Redes</button>
+                <button class="admin-tab" onclick="switchTab('tab-location')">📍 Ubicación</button>
+                <button class="admin-tab" onclick="switchTab('tab-bookings');loadAdminBookings()">📋 Reservas</button>
+            </div>
+            <div class="admin-body">
+                <!-- GENERAL -->
+                <div class="admin-section active" id="tab-general">
+                    <div class="admin-section-title">🏠 Información de la Barbería</div>
+                    <div class="admin-form-grid">
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Nombre del Negocio</label>
+                            <input type="text" id="a-name" class="admin-form-control" placeholder="BarberKing">
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Tipo de Negocio</label>
+                            <select id="a-biztype" class="admin-form-control">
+                                <option value="barberia">✂️ Barbería</option>
+                                <option value="salon">💅 Salón de Uñas</option>
+                                <option value="peluqueria">💇 Peluquería</option>
+                                <option value="spa">🧖 Spa / Estética</option>
+                                <option value="tatuajes">🎨 Tatuajes & Piercing</option>
+                                <option value="otro">⭐ Otro</option>
+                            </select>
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Eslogan</label>
+                            <input type="text" id="a-tagline" class="admin-form-control" placeholder="Cortes de otro nivel">
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">WhatsApp Barbería</label>
+                            <input type="text" id="a-whatsapp" class="admin-form-control" placeholder="5491112345678">
+                        </div>
+                        <div class="admin-form-group">
+                            <label class="admin-form-label">Contraseña Admin</label>
+                            <input type="text" id="a-password" class="admin-form-control" placeholder="nueva contraseña">
+                        </div>
+                    </div>
+                    <button class="admin-save-btn" onclick="saveGeneral()">💾 Guardar Cambios</button>
+                </div>
+
+                <!-- COLORS -->
+                <div class="admin-section" id="tab-colors">
+                    <div class="admin-section-title">🎨 Elige el estilo de tu barbería</div>
+                    <p style="color:var(--text-muted);font-size:0.88rem;margin-bottom:1.4rem">Toca cualquier tema para previsualizar.</p>
+                    <div id="palette-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:1rem"></div>
+                    <div id="palette-preview-bar" style="display:none;margin-top:1.5rem;background:var(--bg);border:1px solid var(--border);border-radius:12px;padding:1.2rem">
+                        <div id="palette-preview-content"></div>
+                        <div style="display:flex;gap:0.8rem;margin-top:1rem;flex-wrap:wrap">
+                            <button class="admin-save-btn" onclick="applySelectedPalette()">✓ Aplicar este tema</button>
+                            <button onclick="clearPaletteSelection()" style="background:transparent;border:1px solid var(--border);color:var(--text-muted);padding:0.7rem 1.2rem;border-radius:50px;font-size:0.88rem;cursor:pointer">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- BARBERS -->
+                <div class="admin-section" id="tab-barbers">
+                    <div class="admin-section-title">👤 Gestión de Barberos</div>
+                    <div class="admin-items-list" id="admin-barbers-list"></div>
+                    <button class="btn-add" onclick="openBarberForm()">+ Agregar Barbero</button>
+                    <div class="admin-mini-form" id="barber-form">
+                        <!-- Form fields same as before -->
+                        <div class="admin-form-grid">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Nombre</label>
+                                <input type="text" id="bf-name" class="admin-form-control">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Especialidad</label>
+                                <input type="text" id="bf-specialty" class="admin-form-control">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">WhatsApp</label>
+                                <input type="text" id="bf-wa" class="admin-form-control">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Foto URL</label>
+                                <input type="text" id="bf-photo" class="admin-form-control">
+                            </div>
+                        </div>
+                        <input type="hidden" id="bf-id">
+                        <button class="admin-save-btn" onclick="saveBarber()">💾 Guardar</button>
+                        <button onclick="closeBarberForm()" style="background:transparent;border:1px solid var(--border);color:var(--text-muted);padding:0.7rem 1.2rem;border-radius:50px;font-size:0.88rem">Cancelar</button>
+                    </div>
+                </div>
+
+                <!-- SERVICES -->
+                <div class="admin-section" id="tab-services">
+                    <div class="admin-section-title">✂️ Gestión de Servicios</div>
+                    <div class="admin-items-list" id="admin-services-list"></div>
+                    <button class="btn-add" onclick="openServiceForm()">+ Agregar Servicio</button>
+                    <div class="admin-mini-form" id="service-form">
+                        <div class="admin-form-grid">
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Nombre</label>
+                                <input type="text" id="sf-name" class="admin-form-control">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Ícono (emoji)</label>
+                                <input type="text" id="sf-icon" class="admin-form-control">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Precio</label>
+                                <input type="number" id="sf-price" class="admin-form-control">
+                            </div>
+                            <div class="admin-form-group">
+                                <label class="admin-form-label">Duración (min)</label>
+                                <input type="number" id="sf-duration" class="admin-form-control">
+                            </div>
+                        </div>
+                        <input type="hidden" id="sf-id">
+                        <button class="admin-save-btn" onclick="saveService()">💾 Guardar</button>
+                        <button onclick="closeServiceForm()" style="background:transparent;border:1px solid var(--border);color:var(--text-muted);padding:0.7rem 1.2rem;border-radius:50px;font-size:0.88rem">Cancelar</button>
+                    </div>
+                </div>
+
+                <!-- HOURS -->
+                <div class="admin-section" id="tab-hours">
+                    <div class="admin-section-title">🕐 Horarios de Atención</div>
+                    <div class="hours-admin-grid" id="hours-admin-grid"></div>
+                    <button class="admin-save-btn" onclick="saveHours()">💾 Guardar Horarios</button>
+                </div>
+
+                <!-- SOCIALS -->
+                <div class="admin-section" id="tab-socials">
+                    <div class="admin-section-title">📲 Redes Sociales</div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">Instagram</label>
+                        <input type="text" id="s-instagram" class="admin-form-control">
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">Facebook</label>
+                        <input type="text" id="s-facebook" class="admin-form-control">
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">tiktok</label>
+                        <input type="text" id="s-tiktok" class="admin-form-control">
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">youtube</label>
+                        <input type="text" id="s-youtube" class="admin-form-control">
+                    </div>
+                    <button class="admin-save-btn" onclick="saveSocials()">💾 Guardar Redes</button>
+                </div>
+
+                <!-- BOOKINGS -->
+                <div class="admin-section" id="tab-bookings">
+                    <div class="admin-section-title">📋 Reservas Activas</div>
+                    <div id="admin-bookings-list"></div>
+                    <p id="admin-bookings-empty" class="hidden">No hay reservas.</p>
+                    <button onclick="if(confirm('¿Limpiar todo?'))saveBookingsRaw([]);" style="margin-top:1.2rem">🗑️ Limpiar todo</button>
+                </div>
+
+                <!-- LOCATION -->
+                <div class="admin-section" id="tab-location">
+                    <div class="admin-section-title">📍 Ubicación</div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">Dirección</label>
+                        <input type="text" id="l-address" class="admin-form-control">
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">Link Maps</label>
+                        <input type="text" id="l-maps" class="admin-form-control">
+                    </div>
+                    <div class="admin-form-group">
+                        <label class="admin-form-label">Ciudad</label>
+                        <input type="text" id="l-city" class="admin-form-control">
+                    </div>
+                    <button class="admin-save-btn" onclick="saveLocation()">💾 Guardar Ubicación</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/data.js"></script>
+    <script src="js/booking.js"></script>
+    <script src="js/admin.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
