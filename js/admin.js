@@ -56,7 +56,27 @@ function switchTab(id) {
   document.querySelectorAll('.admin-section').forEach(s=>s.classList.remove('active'));
   document.querySelectorAll('.admin-tab').forEach(t=>t.classList.remove('active'));
   document.getElementById(id).classList.add('active');
-  event.target.classList.add('active');
+  if(event) event.target.classList.add('active');
+}
+
+/* IMAGE HELPERS */
+function handleImageUpload(input, targetInputId, previewId) {
+  const file = input.files[0];
+  if (!file) return;
+  
+  if (file.size > 800 * 1024) {
+    toast('⚠️ Imagen muy grande. Intenta una de menos de 800KB');
+  }
+
+  const reader = new FileReader();
+  reader.onload = function(e) {
+    const base64 = e.target.result;
+    document.getElementById(targetInputId).value = base64;
+    const preview = document.getElementById(previewId);
+    preview.innerHTML = `<img src="${base64}" style="width:100%;height:100%;object-fit:cover">`;
+    toast('📸 Foto cargada');
+  };
+  reader.readAsDataURL(file);
 }
 
 /* GENERAL */
@@ -181,6 +201,14 @@ function openBarberForm(data={}) {
   document.getElementById('bf-wa').value = data.whatsapp||'';
   document.getElementById('bf-photo').value = data.photo||'';
   document.getElementById('bf-id').value = data.id||'';
+  
+  const preview = document.getElementById('bf-preview');
+  if (data.photo) {
+    preview.innerHTML = `<img src="${data.photo}" style="width:100%;height:100%;object-fit:cover">`;
+  } else {
+    preview.innerHTML = `<span style="font-size:2rem;opacity:0.2">👤</span>`;
+  }
+
   document.getElementById('barber-form').classList.add('open');
   setTimeout(()=>document.getElementById('barber-form').scrollIntoView({behavior:'smooth',block:'nearest'}),50);
 }
@@ -235,7 +263,16 @@ function openServiceForm(data={}) {
   document.getElementById('sf-icon').value = data.icon||'✂️';
   document.getElementById('sf-price').value = data.price||'';
   document.getElementById('sf-duration').value = data.duration||'';
+  document.getElementById('sf-photo').value = data.photo||'';
   document.getElementById('sf-id').value = data.id||'';
+
+  const preview = document.getElementById('sf-preview');
+  if (data.photo) {
+    preview.innerHTML = `<img src="${data.photo}" style="width:100%;height:100%;object-fit:cover">`;
+  } else {
+    preview.innerHTML = `<span style="font-size:2rem;opacity:0.2">✂️</span>`;
+  }
+
   document.getElementById('service-form').classList.add('open');
   setTimeout(()=>document.getElementById('service-form').scrollIntoView({behavior:'smooth',block:'nearest'}),50);
 }
@@ -246,7 +283,13 @@ function editService(id) {
 }
 function saveService() {
   const id = parseInt(document.getElementById('sf-id').value)||null;
-  const s = { name:document.getElementById('sf-name').value, icon:document.getElementById('sf-icon').value||'✂️', price:parseInt(document.getElementById('sf-price').value)||0, duration:parseInt(document.getElementById('sf-duration').value)||30 };
+  const s = { 
+    name:document.getElementById('sf-name').value, 
+    icon:document.getElementById('sf-icon').value||'✂️', 
+    price:parseInt(document.getElementById('sf-price').value)||0, 
+    duration:parseInt(document.getElementById('sf-duration').value)||30,
+    photo:document.getElementById('sf-photo').value || ''
+  };
   if (!s.name) { toast('❌ Falta el nombre'); return; }
   if (id) {
     const idx = appData.services.findIndex(x=>x.id===id);

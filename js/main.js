@@ -86,7 +86,7 @@ function renderServices() {
   el.innerHTML = appData.services.map((s,i) => `
     <div class="service-card reveal" style="transition-delay:${i*0.07}s">
       <div class="service-card-num">${String(i+1).padStart(2,'0')}</div>
-      <span class="service-icon">${s.icon}</span>
+      ${s.photo ? `<div class="service-card-img"><img src="${s.photo}" alt="${s.name}"></div>` : `<span class="service-icon">${s.icon}</span>`}
       <div class="service-name">${s.name}</div>
       <div class="service-divider"></div>
       <div class="service-duration">⏱ ${s.duration} min</div>
@@ -174,6 +174,18 @@ document.querySelectorAll('.nav-links a').forEach(a=>{
 function setupNavbar() {
   window.addEventListener('scroll', ()=>{
     document.getElementById('navbar').classList.toggle('scrolled', window.scrollY > 50);
+  });
+
+  // Interactive Hover for Service Cards
+  document.addEventListener('mousemove', (e) => {
+    const cards = document.querySelectorAll('.service-card');
+    cards.forEach(card => {
+      const rect = card.getBoundingClientRect();
+      const x = ((e.clientX - rect.left) / rect.width) * 100;
+      const y = ((e.clientY - rect.top) / rect.height) * 100;
+      card.style.setProperty('--x', `${x}%`);
+      card.style.setProperty('--y', `${y}%`);
+    });
   });
 }
 

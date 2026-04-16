@@ -339,9 +339,18 @@
                                 <label class="admin-form-label">WhatsApp</label>
                                 <input type="text" id="bf-wa" class="admin-form-control">
                             </div>
-                            <div class="admin-form-group">
-                                <label class="admin-form-label">Foto URL</label>
-                                <input type="text" id="bf-photo" class="admin-form-control">
+                            <div class="admin-form-group" style="grid-column: span 2">
+                                <label class="admin-form-label">Foto del Barbero</label>
+                                <div style="display:flex;gap:1rem;align-items:center">
+                                    <div id="bf-preview" style="width:80px;height:80px;border-radius:12px;background:var(--bg-card2);border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                                        <span style="font-size:2rem;opacity:0.2">👤</span>
+                                    </div>
+                                    <div style="flex:1">
+                                        <input type="text" id="bf-photo" class="admin-form-control" placeholder="URL de la foto o sube una..." style="margin-bottom:0.5rem">
+                                        <button class="btn-add" onclick="document.getElementById('bf-file').click()" style="padding:0.5rem;font-size:0.75rem;border-style:solid">+ Subir desde dispositivo</button>
+                                        <input type="file" id="bf-file" class="hidden" accept="image/*" onchange="handleImageUpload(this, 'bf-photo', 'bf-preview')">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <input type="hidden" id="bf-id">
@@ -372,6 +381,19 @@
                             <div class="admin-form-group">
                                 <label class="admin-form-label">Duración (min)</label>
                                 <input type="number" id="sf-duration" class="admin-form-control">
+                            </div>
+                            <div class="admin-form-group" style="grid-column: span 2">
+                                <label class="admin-form-label">Foto del Servicio (opcional)</label>
+                                <div style="display:flex;gap:1rem;align-items:center">
+                                    <div id="sf-preview" style="width:80px;height:80px;border-radius:12px;background:var(--bg-card2);border:1px solid var(--border);overflow:hidden;display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                                        <span style="font-size:2rem;opacity:0.2">✂️</span>
+                                    </div>
+                                    <div style="flex:1">
+                                        <input type="text" id="sf-photo" class="admin-form-control" placeholder="URL de la foto o sube una..." style="margin-bottom:0.5rem">
+                                        <button class="btn-add" onclick="document.getElementById('sf-file').click()" style="padding:0.5rem;font-size:0.75rem;border-style:solid">+ Subir desde dispositivo</button>
+                                        <input type="file" id="sf-file" class="hidden" accept="image/*" onchange="handleImageUpload(this, 'sf-photo', 'sf-preview')">
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <input type="hidden" id="sf-id">
